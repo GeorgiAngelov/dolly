@@ -87,7 +87,7 @@ def preprocess_batch(batch: Dict[str, List], tokenizer: AutoTokenizer, max_lengt
 
 def load_training_dataset(path_or_dataset: str = DEFAULT_TRAINING_DATASET) -> Dataset:
     logger.info(f"Loading dataset from {path_or_dataset}")
-    dataset = load_dataset(path_or_dataset)["train"]
+    dataset = load_dataset("json", data_files=path_or_dataset)["train"]
     logger.info("Found %d rows", dataset.num_rows)
 
     def _add_text(rec):
